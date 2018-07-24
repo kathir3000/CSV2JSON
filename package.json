@@ -1,0 +1,11 @@
+{
+  "name": "csv2json",
+  "version": "1.0.0",
+  "description": "Convert csv to Json using node in required key mapping",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "kathir3000@gmail.com",
+  "license": "ISC"
+}
