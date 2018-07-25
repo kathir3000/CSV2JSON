@@ -1,5 +1,9 @@
-const csvFilePath = './src/test.csv'
-const csv = require('csvtojson')
+
+const config = require('./config.json');
+const fs = require('fs');
+const csvFilePath = config.csvFileLocation;
+
+const csv = require('csvtojson');
 var _ = require('lodash');
 
 csv().fromFile(csvFilePath)
@@ -8,48 +12,43 @@ csv().fromFile(csvFilePath)
     })
 
 function jsonMapping(jsonFromCsv) {
+    var finalJsonData = {};
     let jsonKeys = Object.keys(jsonFromCsv[0]);
     let columnNames = {};
 
-    var map = jsonKeys.map((value, index) => {
-        columnNames[value] = 'c' + (index + 1);
-        return { [value]: 'c' + (index + 1) };
+    var finalGridColumn = jsonKeys.map((value, index) => {
+        columnNames[value] = config.colName + (index + 1);
+        var attrib = {
+            "defaultF": "Y",
+            "attributeName": value,
+            "width": 150,
+            "attributeOrder": 1,
+            "colName": config.colName + (index + 1),
+            "dbColumn": "BETA_PLAN_ID",
+            "dbColumnType": "Varchar"
+        }
+        return attrib;
     });
-    // jsonKeys.reduce((acc,cur,index)=>{ 
-    //     value = {}       
-    //     value[cur] = 'c'+(index+1) ;
-    //     columnNames.push(value);
 
-    // });
-    // console.log(columnNames);
-    // // console.log(map);
-    // // console.log(jsonFromCsv);
-
-    // var finalData = jsonFromCsv.map((data)=>{
-    //     console.log(columnNames[data[0]])
-    //     var data = _.mapKeys(data, (value, key) => {
-    //         return columnNames[value];
-    //       });
-    //       console.log(data);
-    // });
-    // console.log(finalData);
-
-    let tab = {
-        abc: 1,
-        def: 40,
-        xyz: 50
-    }
-
-    const map1 = {
-        abc: "newabc",
-        def: "newdef",
-        xyz: "newxyz"
-    }
-
-    // Change keys
-    var x = _.mapKeys(tab, (value, key) => {
-        return map1[value];
+    var finalGridData = jsonFromCsv.map((data) => {
+        var data = _.mapKeys(data, (value, key) => {
+            return columnNames[key];
+        });
+        return data;
     });
-    console.log(x);
+
+    finalJsonData.colConf = {}
+    finalJsonData.colConf.gridId = 1;
+    finalJsonData.colConf.gridName = "";
+    finalJsonData.colConf.attributes = finalGridColumn
+
+    finalJsonData.data = finalGridData;
+    fs.writeFile(config.jsonOutputFileLocation, JSON.stringify(finalJsonData, null, 2), 'utf8', function (err) {
+        if (err) {
+            return console.log(err);
+        } 
+        console.log("CSV File converted successfully & Saved at '"+ config.jsonOutputFileLocation + "'");
+    });
+
+
 }
-

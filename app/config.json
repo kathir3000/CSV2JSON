@@ -1,0 +1,5 @@
+{
+    "csvFileLocation":"./src/input.csv",
+    "jsonOutputFileLocation":"./src/outputData.json",
+    "colName":"c"
+}
