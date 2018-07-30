@@ -1,5 +1,5 @@
 {
-    "csvFileLocation":"./src/input.csv",
+    "csvFileLocation":"./src/grid.csv",
     "jsonOutputFileLocation":"./src/outputData.json",
     "colName":"c"
 }

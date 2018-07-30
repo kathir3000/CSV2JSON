@@ -1,57 +1,75 @@
 {
-  "colConf": {
-    "gridId": 1,
-    "gridName": "",
-    "attributes": [
-      {
-        "defaultF": "Y",
-        "attributeName": "Name",
-        "width": 150,
-        "attributeOrder": 1,
-        "colName": "c1",
-        "dbColumn": "BETA_PLAN_ID",
-        "dbColumnType": "Varchar"
-      },
-      {
-        "defaultF": "Y",
-        "attributeName": "Age",
-        "width": 150,
-        "attributeOrder": 1,
-        "colName": "c2",
-        "dbColumn": "BETA_PLAN_ID",
-        "dbColumnType": "Varchar"
-      },
-      {
-        "defaultF": "Y",
-        "attributeName": "Mark",
-        "width": 150,
-        "attributeOrder": 1,
-        "colName": "c3",
-        "dbColumn": "BETA_PLAN_ID",
-        "dbColumnType": "Varchar"
-      }
+  "xAxis": [
+    "Sales",
+    "Margin",
+    "Units"
+  ],
+  "yAxis": [
+    "Pets",
+    "Frozen",
+    "Cloths",
+    "Shoes"
+  ],
+  "heatMapData": [
+    [
+      0,
+      0,
+      "1"
+    ],
+    [
+      0,
+      1,
+      "2"
+    ],
+    [
+      0,
+      2,
+      "3"
+    ],
+    [
+      1,
+      0,
+      "4"
+    ],
+    [
+      1,
+      1,
+      "5"
+    ],
+    [
+      1,
+      2,
+      "6"
+    ],
+    [
+      2,
+      0,
+      "7"
+    ],
+    [
+      2,
+      1,
+      "8"
+    ],
+    [
+      2,
+      2,
+      "9"
+    ],
+    [
+      3,
+      0,
+      "11"
+    ],
+    [
+      3,
+      1,
+      "12"
+    ],
+    [
+      3,
+      2,
+      "13"
     ]
-  },
-  "data": [
-    {
-      "c1": "Arasu",
-      "c2": "15",
-      "c3": "95"
-    },
-    {
-      "c1": "",
-      "c2": "",
-      "c3": ""
-    },
-    {
-      "c1": "Babu",
-      "c2": "14",
-      "c3": "93"
-    },
-    {
-      "c1": "Chithra kala",
-      "c2": "",
-      "c3": "94"
-    }
   ]
 }
