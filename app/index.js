@@ -14,6 +14,11 @@ const options = buildOptions({
         alias: 'f',
         default: config.format
     },
+    noHeader: {
+        type: 'string',
+        alias: 'h',
+        default: config.noHeader
+    },
     data: {
         type: 'string',
         alias: 'd',
@@ -37,16 +42,23 @@ const options = buildOptions({
 const args = minimist(process.argv.slice(2), options);
 const csvFilePath = args.csvFileLocation;
 const jsonFilePath = args.jsonOutputFileLocation;
+let csvOptions = {};
+
+if (args.format.toLowerCase() != 'line') {
+    csvOptions = { noheader: args.noHeader, output: "json" };
+} else if (args.format.toLowerCase() == 'line') {
+    csvOptions = { noheader: true, output: "csv" };
+}
 
 
-csv().fromFile(csvFilePath)
+csv(csvOptions).fromFile(csvFilePath)
     .then((jsonObj) => {
         jsonMapping(jsonObj);
     })
 
 function jsonMapping(jsonFromCsv) {
+    var finalJsonData = {};
     if (args.format.toLowerCase() == 'grid') {
-        var finalJsonData = {};
         let jsonKeys = Object.keys(jsonFromCsv[0]);
         let columnNames = {};
 
@@ -107,13 +119,27 @@ function jsonMapping(jsonFromCsv) {
                 units.push(item);
             }
             return item;
-        });       
+        });
 
         finalJsonData = {
             xAxis, yAxis, heatMapData, sales, margin, units
         }
-        console.log(finalJsonData);
+    }
+    else if (args.format.toLowerCase() == 'line') {
+        let legendData = jsonFromCsv[0];
+        let xAxisData = jsonFromCsv[1];
+        let lineGraphData = jsonFromCsv.slice(2);
+        for (i = 0; i < lineGraphData.length; i++) {
+            console.log(String.fromCharCode(97 + i));
 
+        }
+        // https://stackoverflow.com/questions/35939289/how-to-destructure-into-dynamically-named-variables-in-es6
+        let v = [a, b, c];
+        v = lineGraphData;
+        console.log(a);
+        // finalJsonData = {
+        //     legendData, xAxisData,lineGraphData
+        // }
 
     }
 
@@ -123,6 +149,7 @@ function jsonMapping(jsonFromCsv) {
                 if (err) {
                     return console.log(err);
                 }
+                console.log(finalJsonData);
                 console.log("CSV File converted successfully & Saved at '" + jsonFilePath + "'");
             });
     }
