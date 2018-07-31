@@ -1,5 +1,6 @@
 {
-    "csvFileLocation":"./src/grid.csv",
+    "csvFileLocation":"./src/heatmap.csv",
     "jsonOutputFileLocation":"./src/outputData.json",
-    "colName":"c"
+    "colName":"c",
+    "format":"heatmap"
 }

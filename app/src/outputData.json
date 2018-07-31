@@ -12,64 +12,130 @@
   ],
   "heatMapData": [
     [
-      0,
-      0,
-      "1"
+      "Sales",
+      "Pets",
+      "1000"
     ],
     [
-      0,
-      1,
+      "Margin",
+      "Pets",
       "2"
     ],
     [
-      0,
-      2,
-      "3"
+      "Units",
+      "Pets",
+      "30"
     ],
     [
-      1,
-      0,
-      "4"
+      "Sales",
+      "Frozen",
+      "4000"
     ],
     [
-      1,
-      1,
+      "Margin",
+      "Frozen",
       "5"
     ],
     [
-      1,
-      2,
-      "6"
+      "Units",
+      "Frozen",
+      "60"
     ],
     [
-      2,
-      0,
-      "7"
+      "Sales",
+      "Cloths",
+      "3000"
     ],
     [
-      2,
-      1,
+      "Margin",
+      "Cloths",
       "8"
     ],
     [
-      2,
-      2,
-      "9"
+      "Units",
+      "Cloths",
+      "90"
     ],
     [
-      3,
-      0,
-      "11"
+      "Sales",
+      "Shoes",
+      "1100"
     ],
     [
-      3,
-      1,
+      "Margin",
+      "Shoes",
       "12"
     ],
     [
-      3,
-      2,
-      "13"
+      "Units",
+      "Shoes",
+      "130"
+    ]
+  ],
+  "sales": [
+    [
+      "Sales",
+      "Pets",
+      "1000"
+    ],
+    [
+      "Sales",
+      "Frozen",
+      "4000"
+    ],
+    [
+      "Sales",
+      "Cloths",
+      "3000"
+    ],
+    [
+      "Sales",
+      "Shoes",
+      "1100"
+    ]
+  ],
+  "margin": [
+    [
+      "Margin",
+      "Pets",
+      "2"
+    ],
+    [
+      "Margin",
+      "Frozen",
+      "5"
+    ],
+    [
+      "Margin",
+      "Cloths",
+      "8"
+    ],
+    [
+      "Margin",
+      "Shoes",
+      "12"
+    ]
+  ],
+  "units": [
+    [
+      "Units",
+      "Pets",
+      "30"
+    ],
+    [
+      "Units",
+      "Frozen",
+      "60"
+    ],
+    [
+      "Units",
+      "Cloths",
+      "90"
+    ],
+    [
+      "Units",
+      "Shoes",
+      "130"
     ]
   ]
 }

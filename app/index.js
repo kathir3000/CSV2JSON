@@ -12,7 +12,7 @@ const options = buildOptions({
     format: {
         type: 'string',
         alias: 'f',
-        default: 'grid'
+        default: config.format
     },
     data: {
         type: 'string',
@@ -81,24 +81,39 @@ function jsonMapping(jsonFromCsv) {
     else if (args.format.toLowerCase() == 'heatmap') {
         let xAxis = Object.keys(jsonFromCsv[0]).slice(1); //xAxis
         let yAxis = jsonFromCsv.map(item => item.field1); //yAxis
-        let data = jsonFromCsv.map(item => { 
+        let data = jsonFromCsv.map(item => {
             delete item.field1
             return Object.values(item);
         });
         data = _.flatten(data);
         let heatMapData = [];
         index = 0;
-        for (i=0;i<yAxis.length;i++){
-            for(j=0;j<xAxis.length;j++){
-               heatMapData.push([i,j,data[index]]);
-               index++;
+        for (i = 0; i < yAxis.length; i++) {
+            for (j = 0; j < xAxis.length; j++) {
+                heatMapData.push([yAxis[i], xAxis[j], data[index]]);
+                index++;
             }
         }
+        heatMapData = heatMapData.map(function (item) {
+            return [item[1], item[0], item[2] || '-'];
+        });
+        var sales = [], margin = [], units = [];
+        heatMapData = heatMapData.filter(item => {
+            if (item[0].toLowerCase() == 'sales') {
+                sales.push(item);
+            } else if (item[0].toLowerCase() == 'margin') {
+                margin.push(item);
+            } else if (item[0].toLowerCase() == 'units') {
+                units.push(item);
+            }
+            return item;
+        });       
+
         finalJsonData = {
-            xAxis,yAxis,heatMapData
+            xAxis, yAxis, heatMapData, sales, margin, units
         }
         console.log(finalJsonData);
-        
+
 
     }
 
