@@ -1,66 +1,314 @@
-{
-  "legendData": [
-    "Soup",
-    "Juice",
-    "Coffee",
-    "Breakfast Spreads",
-    "Chips",
-    "Tea",
-    "Candy"
-  ],
-  "xAxisData": [
-    "0",
-    "10",
-    "20",
-    "30",
-    "40",
-    "50",
-    "60",
-    "70",
-    "80"
-  ],
-  "series_a_data": [
-    "18.896245243507",
-    "27.8581526849261",
-    "34.9593556522934",
-    "41.0704169539789",
-    "46.5370360108617",
-    "51.5395018945352",
-    "56.1862981175502"
-  ],
-  "series_b_data": [
-    "19",
-    "27",
-    "35",
-    "41",
-    "45",
-    "53",
-    "58",
-    "63",
-    "69",
-    "73"
-  ],
-  "series_c_data": [
-    "36",
-    "37",
-    "39",
-    "45",
-    "48",
-    "49",
-    "52",
-    "54",
-    "58",
-    "60"
-  ],
-  "series_d_data": [
-    "1",
-    "2",
-    "3",
-    "4",
-    "5",
-    "6",
-    "4",
-    "8",
-    "10"
-  ]
-}
+[
+  {
+    "name": "phone",
+    "collapsed": null,
+    "value": "5",
+    "symbol": "rectangle",
+    "itemStyle": {
+      "normal": {
+        "label": {
+          "show": true,
+          "position": "right",
+          "formatter": "{b}"
+        },
+        "color": "#fa6900",
+        "borderWidth": 2,
+        "borderColor": "#cc66ff"
+      },
+      "emphasis": {
+        "borderWidth": 0
+      }
+    },
+    "children": [
+      {
+        "name": "android",
+        "collapsed": null,
+        "value": "5",
+        "symbol": "rectangle",
+        "itemStyle": {
+          "normal": {
+            "label": {
+              "show": true,
+              "position": "right",
+              "formatter": "{b}"
+            },
+            "color": "#fa6900",
+            "borderWidth": 2,
+            "borderColor": "#cc66ff"
+          },
+          "emphasis": {
+            "borderWidth": 0
+          }
+        },
+        "children": [
+          {
+            "name": "asus",
+            "collapsed": null,
+            "value": "4",
+            "symbol": "rectangle",
+            "itemStyle": {
+              "normal": {
+                "label": {
+                  "show": true,
+                  "position": "right",
+                  "formatter": "{b}"
+                },
+                "color": "#fa6900",
+                "borderWidth": 2,
+                "borderColor": "#cc66ff"
+              },
+              "emphasis": {
+                "borderWidth": 0
+              }
+            },
+            "children": [
+              {
+                "name": "zenphone5",
+                "collapsed": null,
+                "value": "",
+                "symbol": "rectangle",
+                "itemStyle": {
+                  "normal": {
+                    "label": {
+                      "show": true,
+                      "position": "right",
+                      "formatter": "{b}"
+                    },
+                    "color": "#fa6900",
+                    "borderWidth": 2,
+                    "borderColor": "#cc66ff"
+                  },
+                  "emphasis": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "name": "phone",
+    "collapsed": null,
+    "value": "",
+    "symbol": "rectangle",
+    "itemStyle": {
+      "normal": {
+        "label": {
+          "show": true,
+          "position": "right",
+          "formatter": "{b}"
+        },
+        "color": "#fa6900",
+        "borderWidth": 2,
+        "borderColor": "#cc66ff"
+      },
+      "emphasis": {
+        "borderWidth": 0
+      }
+    },
+    "children": [
+      {
+        "name": "android",
+        "collapsed": null,
+        "value": "",
+        "symbol": "rectangle",
+        "itemStyle": {
+          "normal": {
+            "label": {
+              "show": true,
+              "position": "right",
+              "formatter": "{b}"
+            },
+            "color": "#fa6900",
+            "borderWidth": 2,
+            "borderColor": "#cc66ff"
+          },
+          "emphasis": {
+            "borderWidth": 0
+          }
+        },
+        "children": [
+          {
+            "name": "asus",
+            "collapsed": null,
+            "value": "",
+            "symbol": "rectangle",
+            "itemStyle": {
+              "normal": {
+                "label": {
+                  "show": true,
+                  "position": "right",
+                  "formatter": "{b}"
+                },
+                "color": "#fa6900",
+                "borderWidth": 2,
+                "borderColor": "#cc66ff"
+              },
+              "emphasis": {
+                "borderWidth": 0
+              }
+            },
+            "children": [
+              {
+                "name": "zenphone6",
+                "collapsed": null,
+                "value": "",
+                "symbol": "rectangle",
+                "itemStyle": {
+                  "normal": {
+                    "label": {
+                      "show": true,
+                      "position": "right",
+                      "formatter": "{b}"
+                    },
+                    "color": "#fa6900",
+                    "borderWidth": 2,
+                    "borderColor": "#cc66ff"
+                  },
+                  "emphasis": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            ]
+          },
+          {
+            "name": "mi",
+            "collapsed": null,
+            "value": "",
+            "symbol": "rectangle",
+            "itemStyle": {
+              "normal": {
+                "label": {
+                  "show": true,
+                  "position": "right",
+                  "formatter": "{b}"
+                },
+                "color": "#fa6900",
+                "borderWidth": 2,
+                "borderColor": "#cc66ff"
+              },
+              "emphasis": {
+                "borderWidth": 0
+              }
+            },
+            "children": [
+              {
+                "name": "mi5",
+                "collapsed": null,
+                "value": "",
+                "symbol": "rectangle",
+                "itemStyle": {
+                  "normal": {
+                    "label": {
+                      "show": true,
+                      "position": "right",
+                      "formatter": "{b}"
+                    },
+                    "color": "#fa6900",
+                    "borderWidth": 2,
+                    "borderColor": "#cc66ff"
+                  },
+                  "emphasis": {
+                    "borderWidth": 0
+                  }
+                }
+              },
+              {
+                "name": "redmi",
+                "collapsed": null,
+                "value": "",
+                "symbol": "rectangle",
+                "itemStyle": {
+                  "normal": {
+                    "label": {
+                      "show": true,
+                      "position": "right",
+                      "formatter": "{b}"
+                    },
+                    "color": "#fa6900",
+                    "borderWidth": 2,
+                    "borderColor": "#cc66ff"
+                  },
+                  "emphasis": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "name": "apple",
+        "collapsed": null,
+        "value": "",
+        "symbol": "rectangle",
+        "itemStyle": {
+          "normal": {
+            "label": {
+              "show": true,
+              "position": "right",
+              "formatter": "{b}"
+            },
+            "color": "#fa6900",
+            "borderWidth": 2,
+            "borderColor": "#cc66ff"
+          },
+          "emphasis": {
+            "borderWidth": 0
+          }
+        },
+        "children": [
+          {
+            "name": "iphone",
+            "collapsed": null,
+            "value": "",
+            "symbol": "rectangle",
+            "itemStyle": {
+              "normal": {
+                "label": {
+                  "show": true,
+                  "position": "right",
+                  "formatter": "{b}"
+                },
+                "color": "#fa6900",
+                "borderWidth": 2,
+                "borderColor": "#cc66ff"
+              },
+              "emphasis": {
+                "borderWidth": 0
+              }
+            },
+            "children": [
+              {
+                "name": "5s",
+                "collapsed": null,
+                "value": "",
+                "symbol": "rectangle",
+                "itemStyle": {
+                  "normal": {
+                    "label": {
+                      "show": true,
+                      "position": "right",
+                      "formatter": "{b}"
+                    },
+                    "color": "#fa6900",
+                    "borderWidth": 2,
+                    "borderColor": "#cc66ff"
+                  },
+                  "emphasis": {
+                    "borderWidth": 0
+                  }
+                }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+]

@@ -44,10 +44,10 @@ const csvFilePath = args.csvFileLocation;
 const jsonFilePath = args.jsonOutputFileLocation;
 let csvOptions = {};
 
-if (args.format.toLowerCase() != 'line') {
-    csvOptions = { noheader: args.noHeader, output: "json" };
-} else if (args.format.toLowerCase() == 'line') {
+if (args.format.toLowerCase() == 'line' || args.format.toLowerCase() == 'tree') {
     csvOptions = { noheader: true, output: "csv" };
+} else if (args.format.toLowerCase() != 'line' || args.format.toLowerCase() != 'tree') {
+    csvOptions = { noheader: args.noHeader, output: "json" };
 }
 
 
@@ -139,6 +139,61 @@ function jsonMapping(jsonFromCsv) {
         }
     } else if (args.format.toLowerCase() == 'tree') {
         // https://stackoverflow.com/questions/38479174/convert-comma-separated-strings-with-parent-child-relation
+        // Convert to key-based nested structure
+        let styleObj = {
+
+        }
+        function buildTree(arr) {
+            return arr.reduce((tree, csv) => {
+                csv.reduce((obj, title) => obj[title] = obj[title] || {}, tree);
+                return tree;
+            }, {});
+        }
+        // Convert to children-array-based nested structure
+        function convertTree(tree) {
+            return Object.keys(tree).map(name => {
+                name_value = name.split(':');
+                var obj = {
+                    name: name_value[0],
+                    'collapsed': null,
+                    'value': name_value[1] || '',
+                    symbol: "rectangle",
+                    // symbolSize: [350, 30]
+                    // itemStyle: {
+                    //     normal: {
+                    //         label: {
+                    //             show: !0,
+                    //             position: "right",
+                    //             formatter: "{b}"
+                    //         },
+                    //         color: "#fa6900",
+                    //         borderWidth: 2,
+                    //         borderColor: "#cc66ff"
+                    //     },
+                    //     emphasis: {
+                    //         borderWidth: 0
+                    //     }
+                    // }
+                };
+                console.log(obj);
+                var children = convertTree(tree[name]);
+                if (children.length) {
+                    obj.children = children;
+
+                }
+                return obj;
+            });
+        }
+
+        // Convert to key-based nested structure
+        var tree = buildTree(jsonFromCsv);
+
+        // Convert to children-array-based nested structure
+        var finalJsonData = convertTree(tree);
+        console.log(Object.keys(tree));
+
+        // console.log(jsonFromCsv);
+
     }
 
     if (finalJsonData) {

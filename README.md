@@ -16,13 +16,13 @@ npm Install
 
 #Command Line Arguments
 #output json format; default 'grid'
--f or --format [ grid | heatmap | line] 
+-f or --format [ grid | heatmap | line | tree] 
 #input file location; default taken from config file
 -i or -c or --csvFileLocation <input csv file path>
 #output file location;  default taken from config file
 -o or -j or --jsonOutputFileLocation <output Json file path>
 #csv Header; Indicating csv data has no header row and first row is data row. Default is false
--h or --noHeader <true | false>
+-h or --noHeader < true | false >
 
 #run NodeJs
 node index.js [options]
