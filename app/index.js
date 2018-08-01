@@ -129,18 +129,16 @@ function jsonMapping(jsonFromCsv) {
         let legendData = jsonFromCsv[0];
         let xAxisData = jsonFromCsv[1];
         let lineGraphData = jsonFromCsv.slice(2);
-        for (i = 0; i < lineGraphData.length; i++) {
-            console.log(String.fromCharCode(97 + i));
-
+        let lineGraphSeriesData = [];
+        finalJsonData = {
+            legendData, xAxisData
         }
-        // https://stackoverflow.com/questions/35939289/how-to-destructure-into-dynamically-named-variables-in-es6
-        let v = [a, b, c];
-        v = lineGraphData;
-        console.log(a);
-        // finalJsonData = {
-        //     legendData, xAxisData,lineGraphData
-        // }
-
+        for (i = 0; i < lineGraphData.length; i++) {
+            key = 'series_' + String.fromCharCode(97 + i) + '_data';
+            finalJsonData[key] = lineGraphData[i];
+        }
+    } else if (args.format.toLowerCase() == 'tree') {
+        // https://stackoverflow.com/questions/38479174/convert-comma-separated-strings-with-parent-child-relation
     }
 
     if (finalJsonData) {
