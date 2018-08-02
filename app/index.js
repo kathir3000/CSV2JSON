@@ -44,9 +44,9 @@ const csvFilePath = args.csvFileLocation;
 const jsonFilePath = args.jsonOutputFileLocation;
 let csvOptions = {};
 
-if (args.format.toLowerCase() == 'line' || args.format.toLowerCase() == 'tree') {
+if (args.format.toLowerCase() == 'tree') {
     csvOptions = { noheader: true, output: "csv" };
-} else if (args.format.toLowerCase() != 'line' || args.format.toLowerCase() != 'tree') {
+} else if (args.format.toLowerCase() != 'tree') {
     csvOptions = { noheader: args.noHeader, output: "json" };
 }
 
@@ -125,19 +125,29 @@ function jsonMapping(jsonFromCsv) {
             xAxis, yAxis, heatMapData, sales, margin, units
         }
     }
-    else if (args.format.toLowerCase() == 'line') {
-        let legendData = jsonFromCsv[0];
-        let xAxisData = jsonFromCsv[1];
-        let lineGraphData = jsonFromCsv.slice(2);
+    else if (args.format.toLowerCase() == 'line' || args.format.toLowerCase() == 'bar') {
+
+        let xAxisData = Object.keys(jsonFromCsv[0]).slice(1); //xAxis
+        // xAxisData = xAxisData.filter(item => !isNaN(item)); //remove empty headers from csv which are names as 'field' in json
+
+        let legendData = jsonFromCsv.map(item => item.field1); //yAxis
+
+        let lineGraphData = jsonFromCsv.map(item => {
+            delete item.field1
+            return Object.values(item);
+        });
+
+
         let lineGraphSeriesData = [];
         finalJsonData = {
-            legendData, xAxisData
+            xAxisData, legendData
         }
         for (i = 0; i < lineGraphData.length; i++) {
             key = 'series_' + String.fromCharCode(97 + i) + '_data';
             finalJsonData[key] = lineGraphData[i];
         }
-    } else if (args.format.toLowerCase() == 'tree') {
+    }
+    else if (args.format.toLowerCase() == 'tree') {
         // https://stackoverflow.com/questions/38479174/convert-comma-separated-strings-with-parent-child-relation
         // Convert to key-based nested structure
         let styleObj = {
@@ -195,6 +205,10 @@ function jsonMapping(jsonFromCsv) {
         // console.log(jsonFromCsv);
 
     }
+    else if (args.format.toLowerCase() == 'pie') {
+        finalJsonData.legendData = jsonFromCsv.map(item => item.name);
+        finalJsonData.seriesData = jsonFromCsv;
+    }
 
     if (finalJsonData) {
         fs.writeFile(jsonFilePath, JSON.stringify(finalJsonData, null, 2), 'utf8',
@@ -203,7 +217,7 @@ function jsonMapping(jsonFromCsv) {
                     return console.log(err);
                 }
                 console.log(finalJsonData);
-                console.log("CSV File converted successfully & Saved at '" + jsonFilePath + "'");
+                console.log("CSV File converted to '" + args.format + "' format successfully & Saved at '" + jsonFilePath + "'");
             });
     }
     else {

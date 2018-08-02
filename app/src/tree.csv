@@ -1,5 +1,4 @@
-phone:5,android:5,asus:4,zenphone5
-phone,android,asus,zenphone6
-phone,android,mi,mi5
-phone,android,mi,redmi
-phone,apple,iphone,5s
+"phone:5","android:5","asus:4","zenphone5"
+"phone","android","asus","zenphone6"
+"phone","android","mi",
+"phone","apple","iphone","5s"

@@ -16,7 +16,7 @@ npm Install
 
 #Command Line Arguments
 #output json format; default 'grid'
--f or --format [ grid | heatmap | line | tree] 
+-f or --format [ grid | heatmap | line | tree | bar | pie] 
 #input file location; default taken from config file
 -i or -c or --csvFileLocation <input csv file path>
 #output file location;  default taken from config file

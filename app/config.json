@@ -1,7 +1,7 @@
 {
-    "csvFileLocation":"./src/tree.csv",
+    "csvFileLocation":"./src/line.csv",
     "jsonOutputFileLocation":"./src/outputData.json",
     "colName":"c",
-    "format":"tree",
+    "format":"line",
     "noHeader":false
 }
