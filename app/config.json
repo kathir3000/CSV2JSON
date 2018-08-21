@@ -1,7 +1,8 @@
 {
-    "csvFileLocation":"./src/line.csv",
-    "jsonOutputFileLocation":"./src/outputData.json",
-    "colName":"c",
-    "format":"line",
-    "noHeader":false
+    "csvFileLocation": "./src/line.csv",
+    "outputSameFileName": true,
+    "jsonOutputFileLocation": "./src/outputData.json",
+    "colName": "c",
+    "format": "line",
+    "noHeader": false
 }

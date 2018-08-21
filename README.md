@@ -12,11 +12,15 @@ npm Install
 
 "csvFileLocation":"./src/input.csv"
 
+"outputSameFileName": <true|false> 
+
 "jsonOutputFileLocation":"./src/output.json"
+
+
 
 #Command Line Arguments
 #output json format; default 'grid'
--f or --format [ grid | heatmap | line | tree | bar | pie] 
+-f or --format [ grid | heatmap | line | tree | bar | pie | dropdown] 
 #input file location; default taken from config file
 -i or -c or --csvFileLocation <input csv file path>
 #output file location;  default taken from config file

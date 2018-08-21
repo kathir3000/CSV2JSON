@@ -41,7 +41,21 @@ const options = buildOptions({
 
 const args = minimist(process.argv.slice(2), options);
 const csvFilePath = args.csvFileLocation;
-const jsonFilePath = args.jsonOutputFileLocation;
+let outputPath = "";
+console.log(args.jsonOutputFileLocation);
+console.log(config.jsonOutputFileLocation);
+if (args.jsonOutputFileLocation == config.jsonOutputFileLocation && config.outputSameFileName) {
+    outputPath = csvFilePath.split('.');
+    outputPath.pop();
+    outputPath.push('json');
+    outputPath = outputPath.join('.');
+} else {
+    outputPath = args.jsonOutputFileLocation;
+}
+console.log(outputPath);
+const jsonFilePath = outputPath;
+
+
 let csvOptions = {};
 
 if (args.format.toLowerCase() == 'tree') {
@@ -57,6 +71,7 @@ csv(csvOptions).fromFile(csvFilePath)
     })
 
 function jsonMapping(jsonFromCsv) {
+
     var finalJsonData = {};
     if (args.format.toLowerCase() == 'grid') {
         let jsonKeys = Object.keys(jsonFromCsv[0]);
@@ -142,10 +157,21 @@ function jsonMapping(jsonFromCsv) {
         finalJsonData = {
             xAxisData, legendData
         }
+        /*  for (i = 0; i < lineGraphData.length; i++) {
+             key = 'series_' + String.fromCharCode(97 + i) + '_data';
+             finalJsonData[key] = lineGraphData[i];
+         } */
+        let series = [];
         for (i = 0; i < lineGraphData.length; i++) {
-            key = 'series_' + String.fromCharCode(97 + i) + '_data';
-            finalJsonData[key] = lineGraphData[i];
+            series.push(
+                {
+                    name: legendData[i],
+                    data: lineGraphData[i]
+                }
+            );
         }
+        finalJsonData.series = series;
+
     }
     else if (args.format.toLowerCase() == 'tree') {
         // https://stackoverflow.com/questions/38479174/convert-comma-separated-strings-with-parent-child-relation
@@ -202,12 +228,22 @@ function jsonMapping(jsonFromCsv) {
         var finalJsonData = convertTree(tree);
         console.log(Object.keys(tree));
 
-        // console.log(jsonFromCsv);
+        // 
 
     }
     else if (args.format.toLowerCase() == 'pie') {
         finalJsonData.legendData = jsonFromCsv.map(item => item.name);
         finalJsonData.seriesData = jsonFromCsv;
+    }
+    else if (args.format.toLowerCase() == 'dropdown') {
+        let jsonKeys = Object.keys(jsonFromCsv[0]);//header as department
+        finalJsonData.departments = [...jsonKeys];
+        finalJsonData.categories = {};
+        // console.log(jsonFromCsv);
+        for (i = 0; i < jsonKeys.length; i++) {
+            finalJsonData.categories[jsonKeys[i]] = jsonFromCsv.map(item => item[jsonKeys[i]]).filter(Boolean); // .filter(Boolean) will return non empty values
+        }
+
     }
 
     if (finalJsonData) {
